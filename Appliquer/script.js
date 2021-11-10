@@ -56,3 +56,21 @@ function checkCompatibility(tripA, tripB) {
 };
 
 console.log(checkCompatibility(tripA, tripB));
+
+// utiliser clientList qui est formaté plutôt que trips
+var compatibiliyTables = [];
+function findCompatibility(clientList) {
+    clientToTest = [];
+    clientList.forEach(client1 => {
+        clientToTest.push(client1);
+        compatibiliyTables.push(client1); 
+        clientList.forEach(client2 => {
+            if (checkCompatibility(client2, client1) == true) {
+            compatibiliyTables.push({client2, client1});
+            };
+        });
+    });
+};
+
+findCompatibility(clientList);
+console.log(compatibiliyTables);
