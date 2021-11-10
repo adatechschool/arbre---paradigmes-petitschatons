@@ -52,11 +52,7 @@ let tripC = {client: 'Perdita', start: 8, duration: 10, end: 18, price: 8};
 let tripD = {client: 'Anita', start: 16, duration: 3, end: 19, price: 7};
 
 function checkCompatibility(tripA, tripB) {
-    if(tripA.end > tripB.start){
-        return false;
-    } else {
-        return true;
-    };
+    return (tripA.end > tripB.start ? false : true)
 };
 
-console.log(checkCompatibility(tripA, tripC));
+console.log(checkCompatibility(tripA, tripB));
