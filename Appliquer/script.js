@@ -61,10 +61,10 @@ console.log(checkCompatibility(tripA, tripB));
 var compatibiliyTables = [];
 function findCompatibility(clientList) {
     clientList.forEach(client1 => { 
-        compatibiliyTables.push(client1); 
+        compatibiliyTables.push([client1]); 
         clientList.forEach(client2 => {
             if (checkCompatibility(client2, client1) == true) {
-            compatibiliyTables.push({client2, client1});
+            compatibiliyTables.push([{client2}, {client1}]);
             };
         });
     });
@@ -72,4 +72,28 @@ function findCompatibility(clientList) {
 
 findCompatibility(clientList);
 console.log(compatibiliyTables);
+var combo = [];
 
+function findBestPrice(compatibiliyTables) {
+    // pour chaque voyage de la liste afficher le total des gains 
+    var tripNumber = 0;
+    
+    compatibiliyTables.forEach(trip => { 
+        tripNumber ++;
+        var totalTrip = 0;
+        if(trip[1]) {
+            totalTrip = trip[1].client1.price + trip[0].client2.price;
+        } else {
+            totalTrip = trip[0].price;
+        }
+        console.log(`Pour le trip ${tripNumber}, le revenu total est de ${totalTrip}`);
+        combo.push({tripNumber, totalTrip});
+    })
+    // déterminer celui qui rapporte le plus
+    // la combo pour laquelle combo.price > aux autres
+    
+
+};
+
+findBestPrice(compatibiliyTables);
+console.log(combo);
