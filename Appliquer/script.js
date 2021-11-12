@@ -72,7 +72,8 @@ function findCompatibility(clientList) {
 
 findCompatibility(clientList);
 console.log(compatibiliyTables);
-var combo = [];
+
+var combos = [];
 
 function findBestPrice(compatibiliyTables) {
     // pour chaque voyage de la liste afficher le total des gains 
@@ -87,13 +88,20 @@ function findBestPrice(compatibiliyTables) {
             totalTrip = trip[0].price;
         }
         console.log(`Pour le trip ${tripNumber}, le revenu total est de ${totalTrip}`);
-        combo.push({tripNumber, totalTrip});
+        combos.push({tripNumber, totalTrip});
     })
     // déterminer celui qui rapporte le plus
     // la combo pour laquelle combo.price > aux autres
-    
-
+    function findBestPrice(combos) {
+        var bestPrice = combos[0]
+        for (let i= 1; i < combos.length; i++) {
+          if (combos[i].totalTrip > bestPrice.totalTrip) {
+            bestPrice = combos[i]
+          }
+        }
+        return bestPrice
+      }
+    console.log(findBestPrice(combos));
 };
 
 findBestPrice(compatibiliyTables);
-console.log(combo);
